@@ -7,7 +7,9 @@ module.exports = {
   AudioBuffer: require('./build/AudioBuffer'),
   AudioBufferSourceNode: require('./build/AudioBufferSourceNode'),
   GainNode: require('./build/GainNode'),
-
+  ScriptProcessorNode: require('./build/ScriptProcessorNode'),
+  PannerNode: require('./build/PannerNode'),
+  AudioListener: require('./build/AudioListener'),
   constants: require('./build/constants')
 
 }
