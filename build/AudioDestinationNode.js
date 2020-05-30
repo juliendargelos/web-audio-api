@@ -14,12 +14,15 @@ var AudioNode = require('./AudioNode'),
 var AudioDestinationNode = function (_AudioNode) {
   _inherits(AudioDestinationNode, _AudioNode);
 
-  function AudioDestinationNode(context) {
+  function AudioDestinationNode(context, _ref) {
+    var _ref$numberOfChannels = _ref.numberOfChannels,
+        numberOfChannels = _ref$numberOfChannels === undefined ? 2 : _ref$numberOfChannels;
+
     _classCallCheck(this, AudioDestinationNode);
 
-    var _this = _possibleConstructorReturn(this, (AudioDestinationNode.__proto__ || Object.getPrototypeOf(AudioDestinationNode)).call(this, context, 1, 0, 2, 'explicit', 'speakers'));
+    var _this = _possibleConstructorReturn(this, (AudioDestinationNode.__proto__ || Object.getPrototypeOf(AudioDestinationNode)).call(this, context, 1, 0, numberOfChannels, 'explicit', 'speakers'));
 
-    readOnlyAttr(_this, 'maxChannelCount', 2);
+    readOnlyAttr(_this, 'maxChannelCount', 4);
     return _this;
   }
 

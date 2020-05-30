@@ -31,6 +31,9 @@ var AudioContext = function (_events$EventEmitter) {
 
     var _this = _possibleConstructorReturn(this, (AudioContext.__proto__ || Object.getPrototypeOf(AudioContext)).call(this));
 
+    opts = opts || {};
+    var numberOfChannels = 'numberOfChannels' in opts ? opts.numberOfChannels : 2;
+
     var outBuff;
 
     /*Object.defineProperty(this, 'currentTime', {
@@ -40,7 +43,7 @@ var AudioContext = function (_events$EventEmitter) {
 
     Object.defineProperty(_this, 'destination', {
       writable: false,
-      value: new AudioDestinationNode(_this)
+      value: new AudioDestinationNode(_this, { numberOfChannels: numberOfChannels })
     });
     //this.destination = new AudioDestinationNode(this)
 
@@ -54,9 +57,6 @@ var AudioContext = function (_events$EventEmitter) {
       writable: false,
       value: new AudioListener()
     });
-
-    opts = opts || {};
-    var numberOfChannels = 'numberOfChannels' in opts ? opts.numberOfChannels : 2;
 
     _this.currentTime = 0;
     _this.sampleRate = 44100;
