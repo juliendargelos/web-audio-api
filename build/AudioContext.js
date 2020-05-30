@@ -55,18 +55,20 @@ var AudioContext = function (_events$EventEmitter) {
       value: new AudioListener()
     });
 
+    opts = opts || {};
+    var numberOfChannels = 'numberOfChannels' in opts ? opts.numberOfChannels : 2;
+
     _this.currentTime = 0;
     _this.sampleRate = 44100;
-    _this.numberOfChannels = 2;
+    _this.numberOfChannels = numberOfChannels;
     _this.bitDepth = 16;
 
     _this.format = {
-      numberOfChannels: 2,
+      numberOfChannels: numberOfChannels,
       bitDepth: 16,
       sampleRate: _this.sampleRate
     };
 
-    opts = opts || {};
     if (opts.bufferSize) _this.format.bufferSize = opts.bufferSize;
     if (opts.numBuffers) _this.format.numBuffers = opts.numBuffers;
 
