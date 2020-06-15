@@ -87,11 +87,15 @@ var ChannelMixing = function () {
     key: 'speakerMix14',
     value: function speakerMix14(inBuffer, outBuffer) {
       var inData = inBuffer.getChannelData(0),
-          dataOutL = outBuffer.getChannelData(0),
-          dataOutR = outBuffer.getChannelData(1);
+          dataOutFL = outBuffer.getChannelData(0),
+          dataOutFR = outBuffer.getChannelData(1),
+          dataOutBL = outBuffer.getChannelData(2),
+          dataOutBR = outBuffer.getChannelData(3);
       for (var i = 0; i < BLOCK_SIZE; i++) {
-        dataOutL[i] += inData[i];
-        dataOutR[i] += inData[i];
+        dataOutFL[i] += inData[i];
+        dataOutFR[i] += inData[i];
+        dataOutBR[i] += inData[i];
+        dataOutBR[i] += inData[i];
       }
     }
   }, {
@@ -108,11 +112,15 @@ var ChannelMixing = function () {
     value: function speakerMix24(inBuffer, outBuffer) {
       var dataL = inBuffer.getChannelData(0),
           dataR = inBuffer.getChannelData(1),
-          dataOutL = outBuffer.getChannelData(0),
-          dataOutR = outBuffer.getChannelData(1);
+          dataOutFL = outBuffer.getChannelData(0),
+          dataOutFR = outBuffer.getChannelData(1),
+          dataOutBL = outBuffer.getChannelData(2),
+          dataOutBR = outBuffer.getChannelData(3);
       for (var i = 0; i < BLOCK_SIZE; i++) {
-        dataOutL[i] += dataL[i];
-        dataOutR[i] += dataR[i];
+        dataOutFL[i] += dataL[i];
+        dataOutFR[i] += dataR[i];
+        dataOutBL[i] += dataL[i];
+        dataOutBR[i] += dataR[i];
       }
     }
   }, {
